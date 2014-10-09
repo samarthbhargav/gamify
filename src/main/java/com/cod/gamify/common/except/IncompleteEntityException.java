@@ -7,7 +7,7 @@ package com.cod.gamify.common.except;
  * @author Samarth Bhargav
  * 
  */
-public class IncompleteEntity extends Exception {
+public class IncompleteEntityException extends Exception {
 
 	/**
 	 * 
@@ -17,7 +17,7 @@ public class IncompleteEntity extends Exception {
 	/**
 	 * 
 	 */
-	public IncompleteEntity() {
+	public IncompleteEntityException() {
 		super();
 	}
 
@@ -25,21 +25,21 @@ public class IncompleteEntity extends Exception {
 	 * @param message
 	 * @param cause
 	 */
-	public IncompleteEntity(String message, Throwable cause) {
+	public IncompleteEntityException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
 	/**
 	 * @param message
 	 */
-	public IncompleteEntity(String message) {
+	public IncompleteEntityException(String message) {
 		super(message);
 	}
 
 	/**
 	 * @param cause
 	 */
-	public IncompleteEntity(Throwable cause) {
+	public IncompleteEntityException(Throwable cause) {
 		super(cause);
 	}
 

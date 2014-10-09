@@ -1,14 +1,15 @@
 /**
  * 
  */
-package com.cod.gamify.entity;
+package com.cod.gamify.common.entity;
 
 import java.util.Comparator;
 import java.util.Map;
 
 import com.cod.gamify.common.ConfigManager;
 import com.cod.gamify.common.Constants;
-import com.cod.gamify.common.except.IncompleteEntity;
+import com.cod.gamify.common.except.IncompleteEntityException;
+
 
 /**
  * @author Samarth Bhargav
@@ -32,14 +33,14 @@ public class Level {
 		return null;
 	}
 
-	public Level(int levelNumber) throws IncompleteEntity {
+	public Level(int levelNumber) throws IncompleteEntityException {
 		this.setLevelNumber(levelNumber);
 
 		String lName = ConfigManager.getString(Constants.GAMIFY.LEVEL
 				.getName(levelNumber));
 
 		if (lName == null) {
-			throw new IncompleteEntity("Field "
+			throw new IncompleteEntityException("Field "
 					+ Constants.GAMIFY.LEVEL.getName(levelNumber)
 					+ " cannot be null");
 		}
@@ -50,7 +51,7 @@ public class Level {
 				.getPoints(levelNumber));
 
 		if (points == null) {
-			throw new IncompleteEntity("Field "
+			throw new IncompleteEntityException("Field "
 					+ Constants.GAMIFY.LEVEL.getPoints(levelNumber)
 					+ " cannot be null");
 		}

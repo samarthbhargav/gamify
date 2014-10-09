@@ -105,6 +105,20 @@ public class ConfigManager {
 	}
 
 	/**
+	 * Return the value of <b>propertyName</b>. null is returned if property
+	 * does not exist.
+	 * 
+	 * @param propertyName
+	 * @return
+	 */
+	public static List<Integer> getIntList(String propertyName) {
+		if (config.hasPath(propertyName)) {
+			return config.getIntList(propertyName);
+		}
+		return null;
+	}
+
+	/**
 	 * Reloads the config
 	 **/
 	public static void reload() {
@@ -114,8 +128,7 @@ public class ConfigManager {
 		// TODO Pick path from Sytem Property
 		config = ConfigFactory
 				.parseFileAnySyntax(
-						new File("../"
-								+ Constants.APPLICATION.CONFIG_FILE))
+						new File("../" + Constants.APPLICATION.CONFIG_FILE))
 				.resolve().withFallback(originalConfig);
 	}
 }

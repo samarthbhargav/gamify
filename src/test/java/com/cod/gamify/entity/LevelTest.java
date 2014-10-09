@@ -12,7 +12,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.cod.gamify.common.except.IncompleteEntity;
+import com.cod.gamify.common.entity.Level;
+import com.cod.gamify.common.except.IncompleteEntityException;
 
 /**
  * @author Samarth Bhargav
@@ -33,7 +34,7 @@ public class LevelTest {
 	}
 
 	@Test
-	public void testLevelLoading() throws IncompleteEntity {
+	public void testLevelLoading() throws IncompleteEntityException {
 		Level l1 = new Level(1);
 		assertNotNull(l1.getLevelName());
 	}
@@ -50,9 +51,9 @@ public class LevelTest {
 		l.setPoints(-2);
 	}
 
-	@Test(expected = IncompleteEntity.class)
+	@Test(expected = IncompleteEntityException.class)
 	public void testLevelLoadingExceptIncompleteEntity()
-			throws IncompleteEntity {
+			throws IncompleteEntityException {
 		@SuppressWarnings("unused")
 		Level l = new Level(22);
 	}
