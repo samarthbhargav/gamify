@@ -18,6 +18,7 @@ public class Constants {
 		public static final String PORT = "mongo.port";
 		public static final String USERNAME = "mongo.username";
 		public static final String PASSWORD = "mongo.password";
+		public static final String DB = "mongo.db";
 	}
 
 	public static class API {

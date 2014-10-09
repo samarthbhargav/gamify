@@ -12,8 +12,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.cod.gamify.common.entity.Level;
 import com.cod.gamify.common.except.IncompleteEntityException;
+import com.cod.gamify.entity.Level;
 
 /**
  * @author Samarth Bhargav

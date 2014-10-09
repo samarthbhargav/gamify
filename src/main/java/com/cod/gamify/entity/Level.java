@@ -1,21 +1,25 @@
 /**
  * 
  */
-package com.cod.gamify.common.entity;
+package com.cod.gamify.entity;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.cod.gamify.common.ConfigManager;
 import com.cod.gamify.common.Constants;
 import com.cod.gamify.common.except.IncompleteEntityException;
-
+import com.cod.gamify.mongo.entity.MongoEntity;
 
 /**
+ * 
+ * Represents a Level
+ * 
  * @author Samarth Bhargav
  * 
  */
-public class Level {
+public class Level extends MongoEntity {
 
 	private String levelName;
 	private int levelNumber;
@@ -28,9 +32,13 @@ public class Level {
 		// TODO
 	}
 
+	@Override
 	public Map<String, Object> toMap() {
-		// TODO
-		return null;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("_id", levelNumber);
+		map.put("LevelName", levelName);
+		map.put("Points", points);
+		return map;
 	}
 
 	public Level(int levelNumber) throws IncompleteEntityException {

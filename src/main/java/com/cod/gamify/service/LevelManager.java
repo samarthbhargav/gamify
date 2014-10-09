@@ -9,13 +9,13 @@ import java.util.List;
 
 import com.cod.gamify.common.ConfigManager;
 import com.cod.gamify.common.Constants;
-import com.cod.gamify.common.entity.Level;
 import com.cod.gamify.common.except.IncompleteEntityException;
 import com.cod.gamify.common.except.InvalidArgumentException;
 import com.cod.gamify.common.except.InvalidConfigException;
+import com.cod.gamify.entity.Level;
 
 /**
- * @author hduser
+ * @author Samarth Bhargav
  * 
  */
 public class LevelManager {
@@ -54,17 +54,14 @@ public class LevelManager {
 			throw new InvalidArgumentException(
 					"Points cannot be less than zero");
 		}
-		// First Level
-		if (points == 0) {
-			return levels.get(0);
-		}
 
 		for (int i = levels.size() - 1; i >= 0; i--) {
 			if (points >= levels.get(i).getPoints()) {
 				return levels.get(i);
 			}
 		}
-		// Last Level
-		return levels.get(levels.size() - 1);
+		// TODO
+		// This should never happen, maybe throw an exception?
+		return null;
 	}
 }
