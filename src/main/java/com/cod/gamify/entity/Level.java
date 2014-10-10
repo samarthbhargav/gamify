@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.cod.gamify.entity;
 
 import java.util.Comparator;
@@ -29,7 +26,7 @@ public class Level extends MongoEntity {
 	}
 
 	public Level(Map<String, Object> map) {
-		// TODO
+
 	}
 
 	@Override

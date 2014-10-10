@@ -8,7 +8,6 @@ import com.cod.gamify.mongo.entity.MongoEntity;
 import com.mongodb.BasicDBObject;
 
 /**
- * 
  * Class that handles Mongo Serialization and Deserialization and other common
  * functions
  * 
@@ -16,6 +15,9 @@ import com.mongodb.BasicDBObject;
  * 
  */
 public class MongoDAO {
+
+	public static int SORT_ORDER_ASCENDING = 1;
+	public static int SORT_ORDER_DESCENDING = -1;
 
 	/**
 	 * Inserts an Entity

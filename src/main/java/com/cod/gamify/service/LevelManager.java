@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.cod.gamify.service;
 
 import java.util.ArrayList;
@@ -29,10 +26,12 @@ public class LevelManager {
 	public void load() throws InvalidConfigException {
 		List<Integer> levelNumbers = ConfigManager
 				.getIntList(Constants.GAMIFY.LEVELS);
+
 		if (levelNumbers == null || levelNumbers.isEmpty()) {
 			throw new InvalidConfigException("Property "
 					+ Constants.GAMIFY.LEVELS + " is not defined or is empty");
 		}
+
 		levels = new ArrayList<Level>();
 		for (int levelNumber : levelNumbers) {
 			try {
