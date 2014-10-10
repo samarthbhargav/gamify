@@ -3,9 +3,11 @@
  */
 package com.cod.gamify.mongo.dao;
 
+import com.cod.gamify.common.except.MongoException;
 import com.cod.gamify.mongo.MongoConnector;
 import com.cod.gamify.mongo.entity.MongoEntity;
 import com.mongodb.BasicDBObject;
+import com.mongodb.DuplicateKeyException;
 
 /**
  * Class that handles Mongo Serialization and Deserialization and other common
@@ -24,9 +26,13 @@ public class MongoDAO {
 	 * 
 	 * @param entity
 	 */
-	public void insert(MongoEntity entity) {
-		MongoConnector.getCollection(entity.getClass()).insert(
-				new BasicDBObject(entity.toMap()));
+	public void insert(MongoEntity entity) throws MongoException {
+		try {
+			MongoConnector.getCollection(entity.getClass()).insert(
+					new BasicDBObject(entity.toMap()));
+		} catch (DuplicateKeyException e) {
+			throw new MongoException(e);
+		}
 	}
 
 	/**

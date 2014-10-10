@@ -38,6 +38,11 @@ public class UserDAO extends MongoDAO {
 		return new User(object.toMap());
 	}
 
+	/**
+	 * @param sortField
+	 * @param order
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public List<User> fetchUsersSortedBy(String sortField, int order) {
 		DBCursor cursor = MongoConnector.getCollection(User.class).find()
@@ -51,5 +56,16 @@ public class UserDAO extends MongoDAO {
 			users.add(new User(object.toMap()));
 		}
 		return users;
+	}
+
+	/**
+	 * @param id
+	 * @param pointsToAddOrSubtract
+	 */
+	public void incrementPointsForUser(String id, int pointsToAddOrSubtract) {
+		MongoConnector.getCollection(User.class).update(
+				new BasicDBObject("_id", id),
+				new BasicDBObject("$inc", new BasicDBObject("Points",
+						pointsToAddOrSubtract)));
 	}
 }

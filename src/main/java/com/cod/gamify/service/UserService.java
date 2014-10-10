@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cod.gamify.common.except.InvalidArgumentException;
 import com.cod.gamify.common.except.InvalidConfigException;
+import com.cod.gamify.common.except.MongoException;
 import com.cod.gamify.entity.LeaderBoard;
 import com.cod.gamify.entity.User;
 import com.cod.gamify.mongo.dao.UserDAO;
@@ -28,8 +29,9 @@ public class UserService {
 	 * Adds a new User
 	 * 
 	 * @param id
+	 * @throws MongoException
 	 */
-	public void addNewUser(String id) {
+	public void addNewUser(String id) throws MongoException {
 		User user = new User();
 		user.setId(id);
 		user.setPoints(0);
@@ -50,8 +52,23 @@ public class UserService {
 		return user;
 	}
 
+	/**
+	 * Removes a user
+	 * 
+	 * @param id
+	 */
 	public void removeUser(String id) {
 		this.userDAO.remove(User.class, id);
+	}
+
+	/**
+	 * @param id
+	 *            ID of user
+	 * @param points
+	 *            points to add. Can be negative
+	 */
+	public void addPointsToUser(String id, int points) {
+		this.userDAO.incrementPointsForUser(id, points);
 	}
 
 	/**
@@ -71,5 +88,4 @@ public class UserService {
 		leaderBoard.setUsers(users);
 		return leaderBoard;
 	}
-
 }
